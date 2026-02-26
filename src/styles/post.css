@@ -11,6 +11,11 @@ div.post {
     margin: 0 auto;
 }
 
+div.post img {
+    max-width: 100%;
+    height: auto;
+}
+
 @media ( max-width: 768px ) {
     div.post {
         width: 100%;
