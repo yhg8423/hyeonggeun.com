@@ -1,0 +1,28 @@
+---
+import Layout from '../../components/Layout.astro';
+import Command from '../../components/Command.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog');
+const posts = allPosts.sort((a, b) => {
+  return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
+});
+---
+<Layout>
+  <br/>
+  <Command command="ls -l blog" />
+  <br/>
+  {posts.map((post) => (
+    <div class="blog_posts">
+      <span style="font-size: 25px; font-weight: bold;">
+        <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+      </span>
+      <span style="font-size: 15px; font-weight: light; padding-left: 15px;">{post.data.date}</span>
+      <span style="font-size: 15px; font-weight: light; padding-left: 15px;">#{post.data.tags}</span>
+      <br/>
+      <span style="font-size: 20px;">{post.data.subtitle}</span>
+      <br/>
+      <br/>
+    </div>
+  ))}
+</Layout>

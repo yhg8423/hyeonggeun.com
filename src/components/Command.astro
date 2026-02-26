@@ -1,0 +1,10 @@
+---
+interface Props {
+  command: string;
+}
+const { command } = Astro.props;
+---
+<div class="command">
+  <span id="dollar">$&gt; </span>
+  <input type="text" value={command} readonly />
+</div>

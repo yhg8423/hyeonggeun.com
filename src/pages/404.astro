@@ -1,0 +1,11 @@
+---
+import Layout from '../components/Layout.astro';
+import Command from '../components/Command.astro';
+
+const pathname = Astro.url.pathname;
+---
+<Layout>
+  <br/>
+  <Command command={`ls -l ${pathname}`} />
+  <span>{`ls -l ${pathname}: page not found...`}</span>
+</Layout>

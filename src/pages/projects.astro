@@ -1,0 +1,36 @@
+---
+import Layout from '../components/Layout.astro';
+import Command from '../components/Command.astro';
+import { getCollection } from 'astro:content';
+
+const allProjects = await getCollection('projects');
+const ongoing = allProjects.filter(p => p.data.status === 'ongoing');
+const finished = allProjects.filter(p => p.data.status === 'finished');
+---
+<Layout>
+  <br/>
+  <Command command="ls -l projects, works, activities" />
+  <br/>
+  {await Promise.all(ongoing.map(async (project) => {
+    const { Content } = await project.render();
+    return (
+      <div class="projects_result">
+        <span style="font-size: 25px; font-weight: bold;">{project.data.name}</span><br/>
+        <span>#{project.data.type}  #{project.data.status}</span><br/>
+        <div class="projects_html"><Content /></div>
+        <br/>
+      </div>
+    );
+  }))}
+  {await Promise.all(finished.map(async (project) => {
+    const { Content } = await project.render();
+    return (
+      <div class="projects_result">
+        <span style="font-size: 25px; font-weight: bold;">{project.data.name}</span><br/>
+        <span>#{project.data.type}  #{project.data.status}</span><br/>
+        <div class="projects_html"><Content /></div>
+        <br/>
+      </div>
+    );
+  }))}
+</Layout>

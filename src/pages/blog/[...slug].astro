@@ -1,0 +1,34 @@
+---
+import Layout from '../../components/Layout.astro';
+import Command from '../../components/Command.astro';
+import '../../styles/post.css';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const { title, subtitle, date, tags, thumbnail } = post.data;
+
+const ogImage = thumbnail || undefined;
+---
+<Layout ogImage={ogImage}>
+  <br/>
+  <Command command={`vim ${title} (${date})`} />
+  <br/>
+  <div class="post">
+    <div>
+      <h1>{title}</h1>
+      <span style="font-size: 25px;">{subtitle}</span>
+    </div>
+    <br/>
+    <br/>
+    <Content />
+  </div>
+</Layout>

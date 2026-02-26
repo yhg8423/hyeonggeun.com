@@ -1,0 +1,28 @@
+---
+import Layout from '../components/Layout.astro';
+import Command from '../components/Command.astro';
+import '../styles/who.css';
+import { getEntry } from 'astro:content';
+
+const entry = await getEntry('info', 'who');
+const { Content } = await entry.render();
+const fm = entry.data;
+---
+<Layout>
+  <br/>
+  <Command command="who" />
+  <div class="who_result">
+    <span style="font-size: 25px;">{fm.name}</span><br/>
+    <span>{fm.email}</span><br/>
+    <span>
+      <a href={fm.cv}>CV</a> / <a href={fm.google_scholar}>Google Scholar</a> /
+      <a href={fm.facebook}>Facebook</a> / <a href={fm.twitter}>Twitter</a> /
+      <a href={fm.instagram}> Instagram</a> / <a href={fm.git}>Git</a> /
+      <a href={fm.linkedin}> Linkedin</a>
+    </span><br/>
+    <br/>
+    <div class="who_html">
+      <Content />
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,35 @@
+---
+import Layout from '../components/Layout.astro';
+import Command from '../components/Command.astro';
+import '../styles/publications.css';
+import { getCollection } from 'astro:content';
+
+const allPubs = await getCollection('publications');
+const fullPapers = allPubs.filter(p => p.data.type === 'Full Papers');
+const posters = allPubs.filter(p => p.data.type === 'Late-Breaking Works, Posters & Workshop Papers');
+---
+<Layout>
+  <br/>
+  <Command command="ls -l publications" />
+  <br/>
+  {await Promise.all(fullPapers.map(async (pub) => {
+    const { Content } = await pub.render();
+    return (
+      <div class="publications_result">
+        <span style="font-size: 25px; font-weight: bold;">{pub.data.type}</span><br/>
+        <div class="publications_html"><Content /></div>
+        <br/>
+      </div>
+    );
+  }))}
+  <span style="font-size: 25px; font-weight: bold;">Posters &amp; Workshop Papers</span><br/>
+  {await Promise.all(posters.map(async (pub) => {
+    const { Content } = await pub.render();
+    return (
+      <div class="publications_result">
+        <div class="publications_html"><Content /></div>
+        <br/>
+      </div>
+    );
+  }))}
+</Layout>
