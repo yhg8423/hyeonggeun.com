@@ -1,6 +1,7 @@
 ---
 import Layout from '../../components/Layout.astro';
 import Command from '../../components/Command.astro';
+import Giscus from '../../components/Giscus.astro';
 import '../../styles/post.css';
 import { getCollection } from 'astro:content';
 
@@ -30,5 +31,6 @@ const ogImage = thumbnail || undefined;
     <br/>
     <br/>
     <Content />
+    <Giscus />
   </div>
 </Layout>
