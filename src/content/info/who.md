@@ -7,7 +7,7 @@ twitter: "https://twitter.com/yhg8423"
 instagram: "https://www.instagram.com/hg_russ_yun/"
 git: "https://github.com/yhg8423"
 linkedin: "https://www.linkedin.com/in/yhg8423/"
-cv: "https://www.dropbox.com/scl/fi/jw63ugod0txibweofp60a/Hyeonggeun_CV_short_version.pdf?rlkey=9h7mdesnb1nr2tb5xx09uepnc&dl=0"
+cv: "https://www.dropbox.com/scl/fi/npasowvg75u86d8kwxudq/Hyeonggeun_CV_short_version.pdf?rlkey=w9vnb81lqif9s00hbx5c7bj77&st=vb9b5a8i&dl=0"
 cv_developer: "https://www.dropbox.com/scl/fi/onbgwvxkhyeuqybf81thw/Hyeonggeun_CV-SW-_240327.pdf?rlkey=wq7jk4wovf8t5ycpgav3hi7he&dl=0"
 google_scholar: "https://scholar.google.com/citations?user=qh55CiUAAAAJ"
 ---
